@@ -1,0 +1,105 @@
+    /* General Styles */
+    /* Общий стиль страницы */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-image: url('https://i.pinimg.com/736x/53/9b/31/539b31442d2b0bacc787e1792cd6ea0a.jpg'); /* Фон */
+        background-size: cover; /* Растягивает изображение на всю страницу */
+        background-position: center; /* Центрирует фон */
+        background-attachment: fixed; /* Фон остается на месте при прокрутке */
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* Затемнение фона для лучшей читаемости */
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3); /* Затемнение */
+        z-index: -1;
+    }
+
+    /* Центрируем контейнер */
+    .container {
+        background-color: rgba(255, 255, 255, 0.85); /* Полупрозрачный фон */
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        position: relative;
+    }
+
+    /* Основной заголовок */
+    h1 {
+        font-size: 3rem;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    /* Подзаголовок */
+    h2 {
+        font-size: 1.5rem;
+        color: #7f8c8d;
+        margin-bottom: 30px;
+    }
+
+    /* Стили для формы */
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form label {
+        font-size: 1rem;
+        color: #2c3e50;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    form input {
+        width: 80%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+    }
+
+    /* Кнопка */
+    form button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: background-color 0.3s;
+    }
+
+    form button:hover {
+        background-color: #2980b9;
+    }
+
+    /* Медиа-запрос для адаптации на мобильных устройствах */
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
+        }
+
+        form input {
+            width: 100%;
+        }
+    }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Sneakers Shop</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Make sure this link is correct -->
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Sneakers Shop</h1>
+        <h2>Please register yourself</h2>
+
+        <!-- Registration Form -->
+        <form action="/register" method="POST">
+            <label for="register-username">Username:</label>
+            <input type="text" id="register-username" name="username" required>
+
+            <label for="register-password">Password:</label>
+            <input type="password" id="register-password" name="password" required>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <!-- Link to login page -->
+        <p>Already registered? <a href="/login">Log in</a></p>
+    </div>
+</body>
+</html>

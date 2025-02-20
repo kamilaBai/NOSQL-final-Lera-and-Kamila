@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneaker Store</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <!-- Заголовок страницы -->
+    <header>
+        <h1>Sneakers Store</h1>
+        <h2>Product List</h2>
+    </header>
+
+    <!-- Контейнер с товарами -->
+    <div class="product-container">
+        <% products.forEach(product => { %>
+            <div class="product-card">
+                <img src="<%= product.image_url %>" alt="<%= product.name %>">
+                <h3><%= product.name %></h3>
+                <p><strong>Product ID:</strong> <%= product.product_id %></p>
+                <p><strong>Price:</strong> <%= product.price %></p>
+                <p><strong>Old Price:</strong> <%= product.old_price %></p>
+                <p><strong>Season:</strong> <%= product.season_type %></p> <!-- Выводим сезон -->
+                <p><strong>Available Sizes:</strong> <%= product.available_sizes %></p> <!-- Выводим размеры -->
+                <form action="/deleteProduct" method="post">
+                    <input type="hidden" name="id" value="<%= product._id %>">
+                    <button type="submit" class="delete-btn">Delete</button>
+                </form>
+            </div>
+        <% }) %>
+    </div>
+
+    <!-- Блок с формами (добавление и обновление товаров) -->
+    <div class="product-forms">
+        <div class="form-container">
+            <h2>Add New Product</h2>
+            <form action="/addProduct" method="post">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="product_id">Product ID</label>
+                <input type="text" id="product_id" name="product_id" required>
+
+                <label for="price">Price</label>
+                <input type="text" id="price" name="price" required>
+
+                <label for="old_price">Old Price</label>
+                <input type="text" id="old_price" name="old_price">
+
+                <label for="image_url">Image URL</label>
+                <input type="text" id="image_url" name="image_url" required>
+
+                <!-- Выбор сезона -->
+                <label for="id_season">Season</label>
+                <select id="id_season" name="id_season" required>
+                    <% seasons.forEach(season => { %>
+                        <option value="<%= season.id_season %>"><%= season.season_type %></option>
+                    <% }) %>
+                </select>
+
+                <!-- Выбор доступных размеров -->
+                <label for="id_size">Available Sizes</label>
+                <select id="id_size" name="id_size" required>
+                    <% sizes.forEach(size => { %>
+                        <option value="<%= size.idSize %>"><%= size.sizes.join(", ") %></option>
+                    <% }) %>
+                </select>
+
+                <button type="submit" class="add-btn">Add Product</button>
+            </form>
+        </div>
+
+        <div class="form-container">
+            <h2>Update Product by Product ID</h2>
+            <form action="/updateProduct" method="post">
+                <label for="update_product_id">Product ID to Update</label>
+                <input type="text" id="update_product_id" name="update_product_id" required>
+
+                <label for="new_name">New Name</label>
+                <input type="text" id="new_name" name="new_name" required>
+
+                <label for="new_price">New Price</label>
+                <input type="text" id="new_price" name="new_price" required>
+
+                <label for="new_old_price">New Old Price</label>
+                <input type="text" id="new_old_price" name="new_old_price">
+
+                <label for="new_image_url">New Image URL</label>
+                <input type="text" id="new_image_url" name="new_image_url" required>
+
+                <!-- Выбор нового сезона -->
+                <label for="new_id_season">New Season</label>
+                <select id="new_id_season" name="new_id_season" required>
+                    <% seasons.forEach(season => { %>
+                        <option value="<%= season.id_season %>"><%= season.season_type %></option>
+                    <% }) %>
+                </select>
+
+                <!-- Выбор нового размера -->
+                <label for="new_id_size">New Available Sizes</label>
+                <select id="new_id_size" name="new_id_size" required>
+                    <% sizes.forEach(size => { %>
+                        <option value="<%= size.idSize %>"><%= size.sizes.join(", ") %></option>
+                    <% }) %>
+                </select>
+
+                <button type="submit" class="update-btn">Update Product</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
